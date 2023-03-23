@@ -37,7 +37,7 @@ const Header = () => {
                   type="text"
                   className="form-control py-2"
                   placeholder="Tìm kiếm sản phẩm tại đây..."
-                  aria-label="Seach-Product"
+                  aria-label="Tìm kiếm sản phẩm tại đây..."
                   aria-describedby="basic-addon2"
                 />
                 <span className="input-group-text p-3" id="basic-addon2">
