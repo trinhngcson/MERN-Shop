@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BlogCard from "../components/BlogCard";
+import ProductCard from "../components/ProductCard";
 
 const Home = () => {
   return (
@@ -74,6 +76,145 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="home-wrapper-2 py-5">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <div className="services d-flex align-items-center justify-content-between">
+                <div className="d-flex align-items-center gap-10">
+                  <img src="images/service.png" alt="services" />
+                  <div>
+                    <h6>Miễn phí giao hàng</h6>
+                    <p className="mb-0">Cho đơn hàng trên 499.000 VNĐ</p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center gap-10">
+                  <img src="images/service-02.png" alt="services" />
+                  <div>
+                    <h6>Ưu đãi hằng ngày</h6>
+                    <p className="mb-0">Tiết kiệm lên tới 25%</p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center gap-10">
+                  <img src="images/service-03.png" alt="services" />
+                  <div>
+                    <h6>Hỗ trợ 24/7</h6>
+                    <p className="mb-0">
+                      Gọi ngay cho chúng tôi khi bạn có thắc mắc
+                    </p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center gap-10">
+                  <img src="images/service-04.png" alt="services" />
+                  <div>
+                    <h6>Giá cả phải chăng</h6>
+                    <p className="mb-0">Cạnh tranh thị trường</p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center gap-10">
+                  <img src="images/service-05.png" alt="services" />
+                  <div>
+                    <h6>Bảo mật thanh toán</h6>
+                    <p className="mb-0">Thanh toán được bảo vệ 100%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="home-wrapper-2 py-5">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <div className="categories d-flex justify-content-between align-items-center flex-wrap">
+                <div className="d-flex gap-30 align-items-center">
+                  <div>
+                    <h6>BỘ SUIT</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/TV.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>PHỤ KIỆN</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>QUẦN SHORT</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>ÁO POLO</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>ÁO SƠ MI</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>ARISTINO GOLF</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>QUẦN ÂU</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+                <div className="d-flex gap align-items-center">
+                  <div>
+                    <h6>GIÀY DÉP</h6>
+                    <p>10 sản phẩm</p>
+                  </div>
+                  <img src="images/tv.jpg" alt="camera" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="blog-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Bộ sưu tập đặc sắc</h3>
+            </div>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
+        </div>
+      </section>
+      <section className="blog-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Blog mới nhất</h3>
+            </div>
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
           </div>
         </div>
       </section>
