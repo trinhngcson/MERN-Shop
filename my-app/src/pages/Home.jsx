@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
+import SpecialProduct from "../components/SpecialProduct";
 
 const Home = () => {
   return (
@@ -192,12 +193,107 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="blog-wrapper py-5 home-wrapper-2">
+      <section className="featured-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-              <h3 className="section-heading">Bộ sưu tập đặc sắc</h3>
+              <h3 className="section-heading">SẢN PHẨM NỔI BẬT</h3>
             </div>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
+        </div>
+      </section>
+      <section className="famous-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img
+                  src="images/famous-1.jpg"
+                  className="img-fluid"
+                  alt="famous"
+                />
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img
+                  src="images/famous-2.jpg"
+                  className="img-fluid"
+                  alt="famous"
+                />
+                <div className="famous-content">
+                  <h5>BILUXURY</h5>
+                  <h6>
+                    Áo Polo Vải Cotton Mềm Mịn, Thoáng Mát, Thấm Hút Nhanh,
+                    Chống Nhăn 7APCH021TRK
+                  </h6>
+                  <p>499,000₫</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img
+                  src="images/famous-3.jpg"
+                  className="img-fluid"
+                  alt="famous"
+                />
+                <div className="famous-content">
+                  <h5>BILUXURY</h5>
+                  <h6>
+                    Áo Polo Vải Cotton Mềm Mịn, Thoáng Mát, Thấm Hút Nhanh,
+                    Chống Nhăn 7APCH021TRK
+                  </h6>
+                  <p>499,000₫</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img
+                  src="images/famous-4.jpg"
+                  className="img-fluid"
+                  alt="famous"
+                />
+                <div className="famous-content">
+                  <h5>BILUXURY</h5>
+                  <h6>
+                    Áo Polo Vải Cotton Mềm Mịn, Thoáng Mát, Thấm Hút Nhanh,
+                    Chống Nhăn 7APCH021TRK
+                  </h6>
+                  <p>499,000₫</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="special-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">ƯU ĐÃI</h3>
+            </div>
+          </div>
+          <div className="row">
+            <SpecialProduct />
+            <SpecialProduct />
+            <SpecialProduct />
+          </div>
+        </div>
+      </section>
+      <section className="popular-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">TOP TRENDING</h3>
+            </div>
+          </div>
+          <div className="row">
             <ProductCard />
             <ProductCard />
             <ProductCard />
