@@ -93,7 +93,7 @@ const Header = () => {
                 <div>
                   <div className="dropdown">
                     <button
-                      class="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15 d-flex align-items-center"
+                      className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15 d-flex align-items-center"
                       type="button"
                       id="dropdownMenuButton1"
                       data-bs-toggle="dropdown"
@@ -129,8 +129,8 @@ const Header = () => {
                 <div className="menu-links">
                   <div className="d-flex align-items-center gap-15">
                     <NavLink to="/">Trang chủ</NavLink>
-                    <NavLink to="/">Cửa hàng</NavLink>
-                    <NavLink to="/">Blog</NavLink>
+                    <NavLink to="/store">Cửa hàng</NavLink>
+                    <NavLink to="/blogs">Blog</NavLink>
                     <NavLink to="/contact">Liên hệ</NavLink>
                   </div>
                 </div>
