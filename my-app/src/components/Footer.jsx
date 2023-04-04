@@ -79,15 +79,27 @@ const Footer = () => {
             <div className="col-3">
               <h4 className="text-white mb-0">Thông tin</h4>
               <div className="footer-links d-flex flex-column">
-                <Link className="text-white mb-1 py-2">Chính sách bảo mật</Link>
-                <Link className="text-white mb-1 py-2">
-                  Chính sách hoàn tiền
+                <Link to="/chinh-sach-bao-mat" className="text-white mb-1 py-2">
+                  Chính sách bảo mật
                 </Link>
-                <Link className="text-white mb-1 py-2">
+                <Link
+                  to="/chinh-sach-doi-hang"
+                  className="text-white mb-1 py-2"
+                >
+                  Chính sách đổi hàng
+                </Link>
+                <Link
+                  to="/chinh-sach-giao-hang"
+                  className="text-white mb-1 py-2"
+                >
                   Chính sách vận chuyển
                 </Link>
-                <Link className="text-white mb-1 py-2">Điều khoản dịch vụ</Link>
-                <Link className="text-white mb-1 py-2">Blogs</Link>
+                <Link to="/dieu-khoan-dich-vu" className="text-white mb-1 py-2">
+                  Điều khoản dịch vụ
+                </Link>
+                <Link to="/blogs" className="text-white mb-1 py-2">
+                  Blogs
+                </Link>
               </div>
             </div>
             <div className="col-3">

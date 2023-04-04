@@ -9,7 +9,7 @@ const BreadCrumb = (props) => {
           <div className="col-12">
             <p>
               <Link to="/" className="text-dark">
-                Home{" "}
+                Trang Chủ{" "}
               </Link>{" "}
               / {props.title}
             </p>
