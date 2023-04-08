@@ -20,6 +20,10 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    default: "user",
+  },
 });
 
 userSchema.pre("save", async function (next) {
