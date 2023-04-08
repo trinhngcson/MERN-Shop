@@ -634,7 +634,7 @@ footer .input-group-text {
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 .main-product-details .title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--color-1c1c1b);
   margin-bottom: 10px;
@@ -647,20 +647,62 @@ footer .input-group-text {
 .main-product-details a.review-btn,
 .t-review {
   color: var(--color-777777);
-  font-size: 13px;
+  font-size: 14px;
 }
 .product-heading {
-  font-size: 14px;
+  font-size: 20px;
   color: var(--color-1c1c1b);
   margin-bottom: 0px;
 }
 .product-data {
   color: var(--color-777777);
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 0px;
 }
 .main-product-details a {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-777777);
 }
 /* product details end */
+
+/* cart */
+.cart-header,
+.cart-data {
+  border-bottom: 1px solid #eaeaea;
+}
+.cart-header h4 {
+  font-size: 16px;
+  color: var(--color-777777);
+}
+.cart-col-1 {
+  width: 40%;
+}
+.cart-col-1 p {
+  color: var(--color-777777);
+  font-size: 16px;
+}
+.cart-col-2 {
+  width: 10%;
+}
+.cart-col-3 {
+  width: 15%;
+}
+.cart-col-4 {
+  width: 15%;
+}
+.cart-data h5.price {
+  font-size: 16px;
+  color: var(--color-1c1c1b);
+}
+/* cart end */
+
+/* ship page */
+.total {
+  font-size: 14px;
+  color: var(--color-1c1c1b);
+}
+.total-price {
+  font-size: 16px;
+  color: var(--color-777777);
+}
+/* ship end */

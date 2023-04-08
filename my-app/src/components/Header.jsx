@@ -1,6 +1,10 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import compare from "../images/compare.svg";
+import wishlist from "../images/wishlist.svg";
+import user from "../images/user.svg";
+import cart from "../images/cart.svg";
 const Header = () => {
   return (
     <>
@@ -52,7 +56,7 @@ const Header = () => {
                     to="/so-sanh-san-pham"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/compare.svg" alt="compare" />
+                    <img src={compare} alt="compare" />
                     <p className="mb-0">
                       So sánh <br /> sản phẩm
                     </p>
@@ -63,7 +67,7 @@ const Header = () => {
                     to="/san-pham-ua-thich"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/wishlist.svg" alt="wishlist" />
+                    <img src={wishlist} alt="wishlist" />
                     <p className="mb-0">
                       Sản phẩm <br /> yêu thích
                     </p>
@@ -74,7 +78,7 @@ const Header = () => {
                     to="/dang-nhap"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/user.svg" alt="user" />
+                    <img src={user} alt="user" />
                     <p className="mb-0">
                       Đăng nhập <br /> tài khoản
                     </p>
@@ -82,10 +86,10 @@ const Header = () => {
                 </div>
                 <div>
                   <Link
-                    to="/cart"
+                    to="/gio-hang"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/cart.svg" alt="cart" />
+                    <img src={cart} alt="cart" />
                     <div className="d-flex flex-column gap-10">
                       <span className="badge bg-white text-dark">0</span>
                       <p className="mb-0">$ 500</p>
