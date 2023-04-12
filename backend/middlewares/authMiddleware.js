@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const authMiddleware = asyncHandler(async (req, res, next) => {
   let token;
-  if (req.headers?.authorization?.startsWith("Bearer")) {
+  if (req.headers.authorization.startsWith("Bearer")) {
     token = req.headers.authorization.split(" ")[1];
     try {
       if (token) {
@@ -14,10 +14,10 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
         next();
       }
     } catch (error) {
-      throw new Error("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại");
+      throw new Error("Phiên đăng nhập hết hạn, vui lòng đăng nhập lại");
     }
   } else {
-    throw new Error("Phiên đăng nhập không hợp lệ");
+    throw new Error("Lỗi đăng nhập");
   }
 });
 const isAdmin = asyncHandler(async (req, res, next) => {
