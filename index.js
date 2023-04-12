@@ -12,6 +12,9 @@ const {
 const authRouter = require("./backend/routes/authRoute");
 const productRouter = require("./backend/routes/productRoute");
 const blogRouter = require("./backend/routes/blogRoute");
+const prodCateRouter = require("./backend/routes/prodCateRoute");
+const blogCateRouter = require("./backend/routes/blogCateRoute");
+const brandRouter = require("./backend/routes/brandRoute");
 
 const PORT = process.env.PORT || 4000;
 dbConnect();
@@ -24,6 +27,9 @@ app.use(cookieParser());
 app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
+app.use("/api/category", prodCateRouter);
+app.use("/api/blogcategory", blogCateRouter);
+app.use("/api/brand", brandRouter);
 
 app.use(notFound);
 app.use(errorHandler);
