@@ -4,6 +4,9 @@ const asyncHandler = require("express-async-handler");
 const validateMongoDbId = require("../utils/validateMongodbId");
 const { generateRefreshToken } = require("../config/refreshToken");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const sendEmail = require("./emailCtrl");
+const { error } = require("console");
 //register
 const createUser = asyncHandler(async (req, res) => {
   const email = req.body.email;
@@ -40,7 +43,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       token: generateToken(findUser._id),
     });
   } else {
-    throw new Error("Tài khoản không tồn tại");
+    throw new Error("Tài khoản hoặc mật khẩu không chính xác");
   }
 });
 const handleRefreshToken = asyncHandler(async (req, res) => {
@@ -170,6 +173,54 @@ const unblockUser = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+const updatePassword = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  const { password } = req.body;
+  validateMongoDbId(_id);
+  const user = await User.findById(_id);
+  if (password) {
+    user.password = password;
+    const updatedPassword = await user.save();
+    res.json(updatedPassword);
+  } else {
+    res.json(user);
+  }
+});
+const forgotPasswordToken = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) throw new Error("Không tìm thấy Email");
+  try {
+    const token = await user.createResetPasswordToken();
+    await user.save();
+    const resetURL = `Chào ${user.name} <br> Tài khoản của bạn là: ${user.email} <br> Bạn vui lòng nhấp vào link sau để đổi mật khẩu mới: <br> <a href='http://localhost:5000/api/user/reset-password/${token}'>http://localhost:5000/api/user/reset-password/${token}</a> <br> Lưu ý: nếu bạn không yêu cầu lấy lại mật khẩu mới, vui lòng bỏ qua email này và bảo mật thông tin tài khoản của bạn <br> Vui lòng không trả lời email này.`;
+    const data = {
+      to: email,
+      text: `Chào ${user.name}`,
+      subject: "Thư xác nhận thay đổi mật khẩu",
+      html: resetURL,
+    };
+    sendEmail(data);
+    res.json(token);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+const resetPassword = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+  const { token } = req.params;
+  const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: Date.now() },
+  });
+  if (!user) throw new Error("Phiên thay đổi mật khẩu đã hết hạn");
+  user.password = password;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+  res.json(user);
+});
 
 module.exports = {
   createUser,
@@ -182,4 +233,7 @@ module.exports = {
   unblockUser,
   handleRefreshToken,
   logout,
+  updatePassword,
+  forgotPasswordToken,
+  resetPassword,
 };
