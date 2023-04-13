@@ -15,6 +15,7 @@ const blogRouter = require("./backend/routes/blogRoute");
 const prodCateRouter = require("./backend/routes/prodCateRoute");
 const blogCateRouter = require("./backend/routes/blogCateRoute");
 const brandRouter = require("./backend/routes/brandRoute");
+const couponRouter = require("./backend/routes/couponRoute");
 
 const PORT = process.env.PORT || 4000;
 dbConnect();
@@ -30,6 +31,7 @@ app.use("/api/blog", blogRouter);
 app.use("/api/category", prodCateRouter);
 app.use("/api/blogcategory", blogCateRouter);
 app.use("/api/brand", brandRouter);
+app.use("/api/coupon", couponRouter);
 
 app.use(notFound);
 app.use(errorHandler);
