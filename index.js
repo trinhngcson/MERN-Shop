@@ -9,6 +9,7 @@ const {
   notFound,
   errorHandler,
 } = require("./backend/middlewares/errorHandler");
+const cors = require("cors");
 const authRouter = require("./backend/routes/authRoute");
 const productRouter = require("./backend/routes/productRoute");
 const blogRouter = require("./backend/routes/blogRoute");
@@ -16,11 +17,15 @@ const prodCateRouter = require("./backend/routes/prodCateRoute");
 const blogCateRouter = require("./backend/routes/blogCateRoute");
 const brandRouter = require("./backend/routes/brandRoute");
 const couponRouter = require("./backend/routes/couponRoute");
+const colorRouter = require("./backend/routes/colorRoute");
+const enqRouter = require("./backend/routes/enqRoute");
+const uploadRouter = require("./backend/routes/uploadRoute");
 
 const PORT = process.env.PORT || 4000;
 dbConnect();
 
 app.use(morgan("dev"));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -32,6 +37,9 @@ app.use("/api/category", prodCateRouter);
 app.use("/api/blogcategory", blogCateRouter);
 app.use("/api/brand", brandRouter);
 app.use("/api/coupon", couponRouter);
+app.use("/api/color", colorRouter);
+app.use("/api/enquiry", enqRouter);
+app.use("/api/upload", uploadRouter);
 
 app.use(notFound);
 app.use(errorHandler);
