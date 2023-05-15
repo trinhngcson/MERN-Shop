@@ -26,7 +26,7 @@ dbConnect();
 
 app.use(morgan("dev"));
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ extended: true, limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
