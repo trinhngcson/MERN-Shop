@@ -7,23 +7,6 @@ const cloudinary = require("cloudinary");
 
 const createBlog = asyncHandler(async (req, res) => {
   try {
-    let images = [];
-    if (typeof req.body.images == "string") {
-      images.push(req.body.images);
-    } else {
-      images = req.body.images;
-    }
-    const imagesLink = [];
-    for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "blogs",
-      });
-      imagesLink.push({
-        public_id: result.public_id,
-        url: result.secure_url,
-      });
-    }
-    req.body.images = imagesLink;
     const newBlog = await Blog.create(req.body);
     res.json(newBlog);
   } catch (error) {

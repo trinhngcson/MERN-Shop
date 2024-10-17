@@ -5,6 +5,7 @@ import compare from "../images/compare.svg";
 import wishlist from "../images/wishlist.svg";
 import user from "../images/user.svg";
 import cart from "../images/cart.svg";
+
 const Header = () => {
   return (
     <>
@@ -32,7 +33,9 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="col-2">
               <h2>
-                <Link className="text-white">XSON</Link>
+                <Link className="text-white" to="/">
+                  XSON
+                </Link>
               </h2>
             </div>
             <div className="col-5">

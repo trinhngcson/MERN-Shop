@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import ReactImageZoom from "react-image-zoom";
 import BreadCrumb from "../components/BreadCrumb";
@@ -8,7 +8,22 @@ import Color from "../components/Color";
 import { TbArrowsShuffle } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
 import Container from "../components/Container";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllProducts,
+  getAProducts,
+} from "../features/products/productSlice";
 const SingleProduct = () => {
+  const [color, setColor] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const location = window.location.pathname;
+  const prodID = location.split("/")[2];
+  useEffect(() => {
+    dispatch(getAProducts(prodID));
+  }, []);
+  const productState = useSelector((state) => state?.product?.product);
+  const colorData = productState?.color;
   const [orderedProduct, setorderedProduct] = useState(true);
   const copyToClipboard = (text) => {
     var textField = document.createElement("textarea");
@@ -18,6 +33,8 @@ const SingleProduct = () => {
     document.execCommand("copy");
     textField.remove();
   };
+  console.log(colorData);
+  const uploadCart = () => {};
   return (
     <>
       <Meta title="Sản phẩm" />
@@ -31,56 +48,39 @@ const SingleProduct = () => {
                   width={590}
                   height={600}
                   zoomWidth={600}
-                  img="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
+                  img={
+                    productState
+                      ? productState?.images[0].url
+                      : "/images/acc.jpg"
+                  }
                 />
               </div>
             </div>
             <div className="other-product-images d-flex flex-wrap gap-15">
-              <div>
-                <img
-                  src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  alt="watch"
-                  className="img-fluid"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  alt="watch"
-                  className="img-fluid"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  alt="watch"
-                  className="img-fluid"
-                />
-              </div>
-              <div>
-                <img
-                  src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                  alt="watch"
-                  className="img-fluid"
-                />
-              </div>
+              {productState?.images?.map((item, index) => (
+                <div>
+                  <img
+                    src={item?.url}
+                    alt="watch"
+                    className="img-fluid"
+                    key={index}
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <div className="col-6">
             <div className="main-product-details">
               <div className="border-bottom">
-                <h3 className="title">
-                  Áo Sơ Mi Dài Tay Từ Sợi Tre, Kháng Khuẩn, Bền Màu, Chống Nhăn
-                  6SMDS001DEN
-                </h3>
+                <h3 className="title">{productState?.title}</h3>
               </div>
               <div className="border-bottom my-3">
-                <p className="price">575,000₫</p>
+                <p className="price">${productState?.price}</p>
                 <div className="d-flex align-items-center gap-10">
                   <ReactStars
                     count={5}
                     size={24}
-                    value={4}
+                    value={productState?.totalrating}
                     edit={false}
                     activeColor="#ffd700"
                   />
@@ -93,19 +93,19 @@ const SingleProduct = () => {
               <div className="my-3 pb-3">
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Loại sản phẩm: </h3>
-                  <p className="product-data">WATCH</p>
+                  <p className="product-data">{productState?.category}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Hãng: </h3>
-                  <p className="product-data">XSON</p>
+                  <p className="product-data">{productState?.brand}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Danh mục: </h3>
-                  <p className="product-data">watch</p>
+                  <p className="product-data">{productState?.category}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Tags: </h3>
-                  <p className="product-data">WATCH</p>
+                  <p className="product-data">{productState?.tags}</p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Tình trạng: </h3>
@@ -130,7 +130,15 @@ const SingleProduct = () => {
                 </div>
                 <div className="d-flex gap-10 flex-column mt-2 mb-3">
                   <h3 className="product-heading">Color: </h3>
-                  <Color />
+                  {/* <Color colorData={color} /> */}
+                  {colorData.map((item, index) => {
+                    <li
+                      style={{
+                        backgroundColor: item?.title,
+                      }}
+                      key={index}
+                    />;
+                  })}
                 </div>
                 <div className="d-flex gap-15 flex-wrap mt-2 mb-3 align-items-center">
                   <h3 className="product-heading">Số lượng: </h3>
@@ -143,10 +151,18 @@ const SingleProduct = () => {
                       max={10}
                       defaultValue={1}
                       className="form-control w-10"
+                      onChange={(e) => setQuantity(e.target.value)}
+                      value={quantity}
                     />
                   </div>
                   <div className="d-flex align-items-center gap-30 ms-5">
-                    <button className="button border-0" type="submit">
+                    <button
+                      className="button border-0"
+                      type="submit"
+                      onClick={() => {
+                        uploadCart();
+                      }}
+                    >
                       Thêm vào giỏ
                     </button>
                     <button to="/" className="button signup border-0">
@@ -202,16 +218,12 @@ const SingleProduct = () => {
                 </div>
                 <div className="d-flex gap-10 align-items-center my-3">
                   <h3 className="product-heading">Link sản phẩm: </h3>
-                  <a
+                  {/* <a
                     href="javascript:void(0)"
-                    onClick={() =>
-                      copyToClipboard(
-                        "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg"
-                      )
-                    }
+                    onClick={() => copyToClipboard(window.location.href)}
                   >
                     Sao chép Link sản phẩm
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -222,15 +234,10 @@ const SingleProduct = () => {
         <div className="row">
           <div className="col-12">
             <h4>Mô tả sản phẩm</h4>
-            <div className="bg-white p-3">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Officiis repellendus, dolor tempore laboriosam aliquam, quo ex
-                voluptatem, necessitatibus perferendis itaque obcaecati illo
-                odit doloremque voluptatum voluptas? Beatae consectetur
-                quibusdam mollitia!
-              </p>
-            </div>
+            <div
+              className="bg-white p-3"
+              dangerouslySetInnerHTML={{ __html: productState?.description }}
+            ></div>
           </div>
         </div>
       </Container>

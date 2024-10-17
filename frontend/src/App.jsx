@@ -21,6 +21,7 @@ import TermAndConditions from "./pages/TermAndConditions";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
